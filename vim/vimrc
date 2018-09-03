@@ -1,0 +1,107 @@
+"Sources 
+" https://dougblack.io/words/a-good-vimrc.html
+" https://github.com/nicknisi/dotfiles
+
+" Appearance {{{
+	" General
+	set grepprg=grep\ -nH\ $* "to generate always a filename
+	set autoindent "automatically set indent of new line
+	set encoding=utf8
+	set number " show line numbers
+	set relativenumber "shows relative nomer in normal mode
+	set laststatus=2 "show the satus line all the time
+	set noshowmode " don't show which mode disabled for PowerLine
+	set showmatch " show matching braces
+	set lbr " break the line by the space
+	set ruler " shows line number and column number
+	set showcmd " show command in bottom bar
+	"set cursorline "highlight current line
+	set wildmenu " visual autocomplete for command menu
+	set showmatch " highlight matching [{()}]
+	set lazyredraw  "redraw only when we need to.
+	set t_Co=256 " explicitly tell vim that the terminal supports 256 colors
+	set nocompatible
+
+	" Tab control
+	set noexpandtab " insert tabs rather than spaces for <Tab>
+	set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+	set tabstop=4 " the visible width of tabs
+	set softtabstop=4 " edit as if the tabs are 4 characters wide
+	set shiftwidth=4 " number of spaces to use for indent and unindent
+	set shiftround " round indent to a multiple of 'shiftwidth'
+	set modelines=1
+
+	" code folding settings
+	set foldenable " enable folding
+	set foldmethod=syntax " fold based on indent
+	set foldlevelstart=99
+	set foldnestmax=10 " deepest fold is 10 levels
+	set nofoldenable " don't fold by default
+	set foldlevel=1
+
+	" toggle invisible characters
+	set list
+	set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+	set showbreak=↪
+	" }}}
+
+"Plugins {{{
+	" mincpac pliugin manager
+	" To be sure that where the plugins are installed
+	set packpath^=~/.vim
+
+	" For a paranoia.
+	" Normally `:set nocp` is not needed, because it is done automatically
+	" when .vimrc is found.
+	if &compatible
+	  " `:set nocp` has many side effects. Therefore this should be done
+	  " only when 'compatible' is set.
+	  set nocompatible
+	endif
+
+	if exists('*minpac#init')
+	  " minpac is loaded.
+	  call minpac#init()
+	  call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+	  " Additional plugins here.
+	  "call minpac#add('jenegunn/fzf')
+	  call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
+	  call minpac#add('itchyny/lightline.vim')
+	  call minpac#add('tpope/vim-surround')
+	  call minpac#add('altercation/vim-colors-solarized')
+	endif
+
+	" Plugin settings here.
+
+	" Define user commands for updating/cleaning the plugins.
+	" Each of them loads minpac, reloads .vimrc to register the
+	" information of plugins, then performs the task.
+	command! PackUpdate packadd minpac | source $VIMRC | call minpac#update()
+	command! PackClean  packadd minpac | source $VIMRC | call minpac#clean()
+"}}}
+
+" General Mappings {{{
+	" fuzzy search
+	nnoremap <C-p> :<C-u>FZF<CR>
+
+	" scroll the viewport faster
+	nnoremap <C-e> 3<C-e>
+	nnoremap <C-y> 3<C-y>
+	
+	" turn off search highlight
+	nnoremap <leader><space> :nohlsearch<CR>
+
+	" highlight last inserted text
+	nnoremap gV `[v`]
+
+"}}}
+" Colorscheme and final setup {{{
+	syntax on
+	"set background=dark
+	"colorscheme solarized
+	"let g:solarized_termcolors=256
+	filetype plugin indent on "load filetype-specific indent files
+"}}}
+"
+" vim:set foldmethod=marker foldlevel=0
