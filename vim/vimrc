@@ -40,14 +40,19 @@
 	set nocompatible
 	set hidden								"navigate away from a modified file without first saveing it
     set shell=$SHELL
+	set nowrap								" don't automatically wrap on load
+	set fo-=t " don't automatically wrap text when typing
+	set colorcolumn=80
+	highlight ColorColumn ctermbg=23
 
 	" Tab control
-	set noexpandtab							"insert tabs rather than spaces for <Tab>
+	"set noexpandtab						"insert tabs rather than spaces for <Tab>
 	set smarttab							"tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 	set tabstop=4							"the visible width of tabs
 	set softtabstop=4						"edit as if the tabs are 4 characters wide
 	set shiftwidth=4						"number of spaces to use for indent and unindent
 	set shiftround							"round indent to a multiple of 'shiftwidth'
+	set expandtab							"insert spaces rather than tabs for <Tab>
 	set modelines=1
 
 	" code folding settings
@@ -67,7 +72,13 @@
 	" misc
 	set clipboard=unnamed	"use system clipboard
 
-	" }}}
+" }}}
+
+
+" Autocommands{{{
+	autocmd VimResized * wincmd =
+" }}}
+
 
 "Plugins {{{
 	" mincpac pliugin manager
@@ -95,9 +106,9 @@
 	  call minpac#add('tpope/vim-surround')
 	  call minpac#add('tpope/vim-commentary')
 	  call minpac#add('NLKNguyen/papercolor-theme')
-      	call minpac#add('tell-k/vim-autopep8')
-      	call minpac#add('moll/vim-bbye')
-        call minpac#add('w0rp/ale')
+      call minpac#add('tell-k/vim-autopep8')
+      call minpac#add('moll/vim-bbye')
+      call minpac#add('w0rp/ale')
 
 
 	endif
@@ -144,12 +155,15 @@
 	nnoremap <leader>eb :vsp ~/.bashrc<CR>
 	nnoremap <leader>sv :source $VIMRC<CR>
 
+    " line navigation
+    nnoremap k gk
+    nnoremap j gj
 
 	" buffer list
-	nnoremap <silent> [b :bprevious<CR>
-	nnoremap <silent> ]b :bnext<CR>
-	nnoremap <silent> [B :bfirst<CR>
-	nnoremap <silent> ]B :blast<CR>
+	nnoremap <PageUp> :bprevious<CR>
+	nnoremap <PageDown> :bnext<CR>
+	" nnoremap <silent> [B :bfirst<CR>
+	" nnoremap <silent> ]B :blast<CR>
 	
 	" helpers for dealing with other people's code
     nmap \t :set ts=4 sts=4 sw=4 noet<cr>
@@ -188,6 +202,11 @@
 	let g:ctrlp_switch_buffer = 0
 	let g:ctrlp_working_path_mode = 0
 	let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+	let g:ctrlp_max_height = 30
+	set wildignore+=*.pyc
+	set wildignore+=*_build/*
+	set wildignore+=*/coverage/*
+
 "}}}
 
 " ale options {{{
@@ -205,7 +224,7 @@
 	let g:ale_sign_column_always = 0
 	let g:ale_open_list = 0
 	let g:ale_keep_list_window_open = '1'
-	let g:ale_fix_on_save = 1
+	"let g:ale_fix_on_save = 1
 	let g:ale_set_highlights = 1
 	let g:ale_warn_about_trailing_whitespace = 0
 	let g:ale_warn_about_trailing_blank_lines = 0
@@ -231,7 +250,7 @@
 			\ set textwidth=80 |
 			\ set expandtab |
 			\ set autoindent |
-			\ set wrap | 
+			\ set nowrap | 
 			\ set fileformat=unix 
 
 	" Flagging Unnecessary Whitespace
@@ -244,6 +263,6 @@
 		autocmd FileType python setlocal omnifunc=python3complete#Complete
 		
 	" Autopep
-		let g:autopep8_on_save = 0
-		let g:autopep8_disable_show_diff=1
+		" let g:autopep8_on_save = 0
+		" let g:autopep8_disable_show_diff=1
 " }}}
