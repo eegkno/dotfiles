@@ -3,30 +3,9 @@
 # for examples
 # colors
 
-
-
-
-
-# FraudDetectionCollision
-export FDC=$HOME/FraudDetectionCollision
-export FDCDR=$FDC/data/raw
-export FDCDI=$FDC/data/interim
-export FDCDP=$FDC/data/processed
-
-# Configuring variables for vim
-export VIMCONFIG=$HOME/.vim
-export VIMDATA=$HOME/.vim
-export VIMRC=$HOME/.vimrc
-export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
-
 # Configuration PATH
 export PATH=$PATH:$VIMCONFIG/pack/bundle/start/fzf/bin:$HOME/.local/bin
 export PATH=$HOME/.conda/envs/collision/bin:$PATH
-
-# Configuration Freeling
-export FLINSTALL=$HOME/freeling
-export PATH=$FLINSTALL/bin:$FLINSTALL/lib:$FLINSTALL/include:$FLINSTALL/share:$PATH
-export FREELINGSHARE=$FLINSTALL/share/freeling
 
 # If not running interactively, don't do anything
 case $- in
@@ -82,17 +61,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Detect git branch
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
- }
-
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[33m\]$(parse_git_branch)\[\033[00m\]\$'
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$'
-fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -119,15 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alFh'
-alias la='ls -A'
-alias l='ls -CF'
-alias vim=/usr/bin/vi
-#alias vi=$HOME/nvim.appimage
-alias vi=$HOME/squashfs-root/usr/bin/nvim
-alias tmux="TERM=screen-256color-bce tmux"
-alias dev='tmux -f conf/tmux_app.conf attach'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
