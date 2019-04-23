@@ -1,15 +1,48 @@
+[user]
+	name = Edgar Garcia Cano
+	email = eegkno@gmail.com
+[github]
+    user = eegkno
+[core]
+	editor = vi
+	excludesfile = \"$HOME\".gitignore_global
+[merge]
+        tool = vimdiff
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    glog = log --oneline --graph --all
+    nicelog = log --oneline --graph --all --decorate --color
+    lg = log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	co = checkout
 	br = branch
 	ci = commit
 	st = status
 	un = reset HEAD --
 	last = log -1 HEAD
-[core]
-	editor = vim
-[user]
-	name = 
-	email = 
-[push]
-	default = simple
+    deleted = log --diff-filter=D --summary | grep delete
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
+[color "branch"]
+    current = green bold
+    local = green
+    remote = red bold
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red
+[color "sh"]
+    branch = yellow
+
