@@ -1,268 +1,262 @@
 "Sources
 " https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/nicknisi/dotfiles
-
+    
 " General {{{
-	set autoread							"detect when a file is changed
-	set history=1000						"change history to 1000
+    set autoread                            "detect when a file is changed
+    set history=1000                        "change history to 1000
 
-	" Backups
-	set undodir=~/.vim/.undo//
-	set backupdir=~/.vim/.backup//
-	set directory=~/.vim/.swp//
+    " Backups
+    set undodir=~/.vim/.undo//
+    set backupdir=~/.vim/.backup//
+    set directory=~/.vim/.swp//
 
-	" Searching
-	set ignorecase							"case insensitive searching
-    set smartcase							"case-sensitive if expresson contains a capital letter
-	set incsearch							"search as characters are entered
-	set hlsearch							"highlight matches
-	set magic								"set magic on, for regex
-	" }}}
+    " Searching
+    set ignorecase                          "case insensitive searching
+    set smartcase                           "case-sensitive if expresson contains a capital letter
+    set incsearch                           "search as characters are entered
+    set hlsearch                            "highlight matches
+    set magic                               "set magic on, for regex
+    " }}}
 
 " Appearance  {{{
 
-	set grepprg=grep\ -nH\ $*				"to generate always a filename
-	set autoindent							"automatically set indent of new line
-	set encoding=utf8
-	set number								"show line numbers
-	set relativenumber						"shows relative nomer in normal mode
-	set laststatus=2						"show the satus line all the time
-	set noshowmode							"don't show which mode disabled for PowerLine
-	set showmatch							"show matching braces
-	set lbr									"break the line by the space
-	set ruler								"shows line number and column number
-	set showcmd								"show command in bottom bar
-	set cursorline							"highlight current line
-	set wildmenu							"visual autocomplete for command menu
-	set showmatch							"highlight matching [{()}]
-	set lazyredraw							"redraw only when we need to.
-	set t_Co=256							"explicitly tell vim that the terminal supports 256 colors
-	set nocompatible
-	set hidden								"navigate away from a modified file without first saveing it
+    set grepprg=grep\ -nH\ $*               "to generate always a filename
+    set encoding=utf8
+    set number                              "show line numbers
+    set relativenumber                      "shows relative nomer in normal mode
+    set laststatus=2                        "show the satus line all the time
+    set noshowmode                          "don't show which mode disabled for PowerLine
+    set showmatch                           "show matching braces
+    set lbr                                 "break the line by the space
+    set ruler                               "shows line number and column number
+    set showcmd                             "show command in bottom bar
+    set cursorline                          "highlight current line
+    set wildmenu                            "visual autocomplete for command menu
+    set showmatch                           "highlight matching [{()}]
+    set lazyredraw                          "redraw only when we need to.
+    set t_Co=256                            "explicitly tell vim that the terminal supports 256 colors
+    set nocompatible
+    set hidden                              "navigate away from a modified file without first saveing it
     set shell=$SHELL
-	set nowrap								" don't automatically wrap on load
-	set fo-=t " don't automatically wrap text when typing
-	set colorcolumn=80
-	highlight ColorColumn ctermbg=23
+    set nowrap                              " don't automatically wrap on load
+    set fo-=t " don't automatically wrap text when typing
+    "set colorcolumn=80
+    "highlight ColorColumn ctermbg=23
 
-	" Tab control
-	"set noexpandtab						"insert tabs rather than spaces for <Tab>
-	set smarttab							"tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-	set tabstop=4							"the visible width of tabs
-	set softtabstop=4						"edit as if the tabs are 4 characters wide
-	set shiftwidth=4						"number of spaces to use for indent and unindent
-	set shiftround							"round indent to a multiple of 'shiftwidth'
-	set expandtab							"insert spaces rather than tabs for <Tab>
-	set modelines=1
+    " Tab control
+    "set noexpandtab                        "insert tabs rather than spaces for <Tab>
+    filetype plugin indent on               "load filetype-specific indent files
+    set smarttab                            "tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+    set smartindent	                        "Enable smart-indent
+    set tabstop=4                           "the visible width of tabs
+    set softtabstop=4                       "edit as if the tabs are 4 characters wide
+    set shiftwidth=4                        "number of spaces to use for indent and unindent
+    set shiftround                          "round indent to a multiple of 'shiftwidth'
+    set expandtab                           "insert spaces rather than tabs for <Tab>
+    set modelines=1
+    set autoindent                          "automatically set indent of new line
 
-	" code folding settings
-	set foldenable " enable folding
-	set foldmethod=indent " fold based on indent level
-	set foldlevelstart=10  " open most folds by default
-	set foldnestmax=10 " deepest fold is 10 levels
-	set nofoldenable " don't fold by default
-	set foldlevel=1
+    " code folding settings
+    set foldenable " enable folding
+    set foldmethod=indent " fold based on indent level
+    set foldlevelstart=10  " open most folds by default
+    set foldnestmax=10 " deepest fold is 10 levels
+    set nofoldenable " don't fold by default
+    set foldlevel=1
 
     "highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-	" path configuration
-	set path=$PWD/** " set your path variable to current directory
+    " path configuration
+    set path=$PWD/** " set your path variable to current directory
 
-	" misc
-	set clipboard=unnamed	"use system clipboard
+    " misc
+    set clipboard=unnamed   "use system clipboard
 
 " }}}
 
 
 " Autocommands{{{
-	autocmd VimResized * wincmd =
+    autocmd VimResized * wincmd =
 " }}}
 
 
 "Plugins {{{
-	" mincpac pliugin manager
-	" To be sure that where the plugins are installed
-	set packpath^=~/.vim
+    " mincpac pliugin manager
+    " To be sure that where the plugins are installed
+    set packpath^=~/.vim
 
-	" For a paranoia.
-	" Normally `:set nocp` is not needed, because it is done automatically
-	" when .vimrc is found.
-	if &compatible
-	  " `:set nocp` has many side effects. Therefore this should be done
-	  " only when 'compatible' is set.
-	  set nocompatible
-	endif
+    " For a paranoia.
+    " Normally `:set nocp` is not needed, because it is done automatically
+    " when .vimrc is found.
+    if &compatible
+      " `:set nocp` has many side effects. Therefore this should be done
+      " only when 'compatible' is set.
+      set nocompatible
+    endif
 
-	if exists('*minpac#init')
-	  " minpac is loaded.
-	  call minpac#init()
-	  call minpac#add('k-takata/minpac', {'type': 'opt'})
+    if exists('*minpac#init')
+      " minpac is loaded.
+      call minpac#init()
+      call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-	  " Additional plugins here.
-	  "all minpac#add('jenegunn/fzf',{'do':'./install --all'})
-	  call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
-	  call minpac#add('itchyny/lightline.vim')
-	  call minpac#add('tpope/vim-surround')
-	  call minpac#add('tpope/vim-commentary')
-	  call minpac#add('NLKNguyen/papercolor-theme')
+      " Additional plugins here.
+      "all minpac#add('jenegunn/fzf',{'do':'./install --all'})
+      call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
+      call minpac#add('itchyny/lightline.vim')
+      call minpac#add('tpope/vim-surround')
+      call minpac#add('tpope/vim-commentary')
+      call minpac#add('NLKNguyen/papercolor-theme')
       call minpac#add('tell-k/vim-autopep8')
       call minpac#add('moll/vim-bbye')
       call minpac#add('w0rp/ale')
 
 
-	endif
+    endif
 
-	" Plugin settings here.
+    " Plugin settings here.
 
-	" Define user commands for updating/cleaning the plugins.
-	" Each of them loads minpac, reloads .vimrc to register the
-	" information of plugins, then performs the task.
-	command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
-	command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
-	command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
-	"command! PackUpdate packadd minpac | source $VIMRC | call minpac#update()
-	"command! PackClean  packadd minpac | source $VIMRC | call minpac#clean()
+    " Define user commands for updating/cleaning the plugins.
+    " Each of them loads minpac, reloads .vimrc to register the
+    " information of plugins, then performs the task.
+    command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
+    command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+    command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
+    "command! PackUpdate packadd minpac | source $VIMRC | call minpac#update()
+    "command! PackClean  packadd minpac | source $VIMRC | call minpac#clean()
 
 "}}}
 
 " General Mappings {{{
 
-	let mapleader=","       " leader is comma
+    let mapleader=","       " leader is comma
 
-	" split navigations
-	nnoremap <C-j> <C-w><C-j>
-	nnoremap <C-k> <C-w><C-k>
-	nnoremap <C-l> <C-w><C-l>
-	nnoremap <C-h> <C-w><C-h>
+    " split navigations
+    nnoremap <C-j> <C-w><C-j>
+    nnoremap <C-k> <C-w><C-k>
+    nnoremap <C-l> <C-w><C-l>
+    nnoremap <C-h> <C-w><C-h>
 
-	" fuzzy search
-	nnoremap <C-p> :<C-u>FZF<CR>
+    " fuzzy search
+    nnoremap <C-p> :<C-u>FZF<CR>
 
-	" scroll the viewport faster
-	nnoremap <C-e> 5<C-e>
-	nnoremap <C-y> 5<C-y>
-	
-	" turn off search highlight
-	"nnoremap <leader><space> :nohlsearch<CR>
-	nnoremap <space> :nohlsearch<CR>
+    " scroll the viewport faster
+    nnoremap <C-e> 5<C-e>
+    nnoremap <C-y> 5<C-y>
+    
+    " turn off search highlight
+    "nnoremap <leader><space> :nohlsearch<CR>
+    nnoremap <space> :nohlsearch<CR>
 
-	" highlight last inserted text
-	nnoremap gV `[v`]
+    " highlight last inserted text
+    nnoremap gV `[v`]
 
-	" edit vimrc/zshrc and load vimrc bindings
-	nnoremap <leader>ev :vsp $VIMRC<CR>
-	nnoremap <leader>eb :vsp ~/.bashrc<CR>
-	nnoremap <leader>sv :source $VIMRC<CR>
+    " edit vimrc/zshrc and load vimrc bindings
+    nnoremap <leader>ev :vsp $VIMRC<CR>
+    nnoremap <leader>eb :vsp ~/.bashrc<CR>
+    nnoremap <leader>sv :source $VIMRC<CR>
 
     " line navigation
     nnoremap k gk
     nnoremap j gj
 
-	" buffer list
-	nnoremap <PageUp> :bprevious<CR>
-	nnoremap <PageDown> :bnext<CR>
-	" nnoremap <silent> [B :bfirst<CR>
-	" nnoremap <silent> ]B :blast<CR>
-	
-	" helpers for dealing with other people's code
+    " buffer list
+    nnoremap <PageUp> :bprevious<CR>
+    nnoremap <PageDown> :bnext<CR>
+    " nnoremap <silent> [B :bfirst<CR>
+    " nnoremap <silent> ]B :blast<CR>
+    
+    " helpers for dealing with other people's code
     nmap \t :set ts=4 sts=4 sw=4 noet<cr>
     nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
-	" terminal mode
-	if has('nvim')
-		tnoremap <Esc> <C-\><C-n> 
-		tnoremap <C-v><Esc> <Esc>
-	endif	
+    " terminal mode
+    if has('nvim')
+        tnoremap <Esc> <C-\><C-n> 
+        tnoremap <C-v><Esc> <Esc>
+    endif   
 
-	if has('nvim')
-		highlight! link TermCursor Cursor
-		highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
-	endif
+    if has('nvim')
+        highlight! link TermCursor Cursor
+        highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+    endif
 
-	" Preferred editor
-	if has('nvim') && executable('nvr')
-		let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
-	endif
+    " Preferred editor
+    if has('nvim') && executable('nvr')
+        let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+    endif
 
-	" Close buffers but keep splits
+    " Close buffers but keep splits
     nmap <leader>b :Bdelete<cr>
 
 "}}}
 
 " Colorscheme and final setup {{{
-	syntax on
-	set background=dark
-	colorscheme PaperColor
-	filetype plugin indent on "load filetype-specific indent files
+    syntax on
+    set background=dark
+    colorscheme PaperColor
 "}}}
 
 " CtrlP settings  {{{
-	let g:ctrlp_match_window = 'bottom,order:ttb'
-	let g:ctrlp_switch_buffer = 0
-	let g:ctrlp_working_path_mode = 0
-	let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-	let g:ctrlp_max_height = 30
-	set wildignore+=*.pyc
-	set wildignore+=*_build/*
-	set wildignore+=*/coverage/*
+    let g:ctrlp_match_window = 'bottom,order:ttb'
+    let g:ctrlp_switch_buffer = 0
+    let g:ctrlp_working_path_mode = 0
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+    let g:ctrlp_max_height = 30
+    set wildignore+=*.pyc
+    set wildignore+=*_build/*
+    set wildignore+=*/coverage/*
 
 "}}}
 
 " ale options {{{
-	" Check Python files with flake8 and pylint.
-	let b:ale_linters = ['flake8', 'pylint']
-	
-	" Fix Python files with autopep8 and yapf.
-	let b:ale_fixers = ['autopep8', 'yapf']
-	
-	" Disable warnings about trailing whitespace for Python files.
-	let b:ale_warn_about_trailing_whitespace = 0
-	let g:ale_python_flake8_options = '--ignore=E129,E501,E302,E265,E241,E305,E402,W503'
-	let g:ale_python_pylint_options = '-j 0 --max-line-length=100'
-	let g:ale_list_window_size = 5
-	let g:ale_sign_column_always = 0
-	let g:ale_open_list = 0
-	let g:ale_keep_list_window_open = '1'
-	"let g:ale_fix_on_save = 1
-	let g:ale_set_highlights = 1
-	let g:ale_warn_about_trailing_whitespace = 0
-	let g:ale_warn_about_trailing_blank_lines = 0
-	let g:ale_set_balloons = 1
-	let g:ale_completion_enabled = 1
-	let g:ale_close_preview_on_insert = 1
-
-
-	let g:ale_sign_error = '‼'
-	let g:ale_sign_warning = '∙'
-	let g:ale_lint_on_text_changed = 'always'
-	let g:ale_lint_on_enter = '0'
-	let g:ale_lint_on_save = '1'
+    " Check Python files with flake8 and pylint.
+    let b:ale_linters = {'python': ['flake8', 'pylint']}
+    
+    " Fix Python files with autopep8 and yapf.
+    let b:ale_fixers = {'python': ['black', 'yapf']} 
+    
+    let g:ale_python_flake8_options = '--ignore=E129,E501,E302,E265,E241,E305,E402,W503'
+    let g:ale_python_pylint_options = '-j 0 --max-line-length=100'
+    let g:ale_list_window_size = 5
+    let g:ale_sign_column_always = 0
+    let g:ale_open_list = 0
+    let g:ale_keep_list_window_open = '1'
+    "let g:ale_fix_on_save = 1
+    let g:ale_set_highlights = 1
+    " Disable warnings about trailing whitespace for Python files.
+    let g:ale_warn_about_trailing_whitespace = 0
+    let g:ale_warn_about_trailing_blank_lines = 0
+    let g:ale_set_balloons = 1
+    let g:ale_completion_enabled = 1
+    let g:ale_close_preview_on_insert = 1
+    let g:ale_sign_error = '‼'
+    let g:ale_sign_warning = '∙'
+    let g:ale_lint_on_text_changed = 'always'
+    let g:ale_lint_on_enter = '1'
+    let g:ale_lint_on_save = '1'
 
 "}}}
 
 " Python {{{
-	" PEP 8
-		au BufNewFile,BufRead *.py
-			\ set tabstop=4 |
-			\ set softtabstop=4 | 
-			\ set shiftwidth=4 |
-			\ set textwidth=80 |
-			\ set expandtab |
-			\ set autoindent |
-			\ set nowrap | 
-			\ set fileformat=unix 
+    " PEP 8
+        au BufNewFile,BufRead *.py
+            \ set tabstop=4 |
+            \ set softtabstop=4 | 
+            \ set shiftwidth=4 |
+            \ set textwidth=80 |
+            \ set expandtab |
+            \ set autoindent |
+            \ set nowrap | 
+            \ set fileformat=unix 
 
-	" Flagging Unnecessary Whitespace
-		highlight BadWhitespace ctermbg=red guibg=darkred
-		au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-	
-	" Syntax Checking/Highlighting
-		let python_highlight_all=1
-		" filetype plugin on
-		autocmd FileType python setlocal omnifunc=python3complete#Complete
-		
-	" Autopep
-		" let g:autopep8_on_save = 0
-		" let g:autopep8_disable_show_diff=1
+    " Flagging Unnecessary Whitespace
+        highlight BadWhitespace ctermbg=red guibg=darkred
+        au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+    
+    " Syntax Checking/Highlighting
+        let python_highlight_all=1
+        autocmd FileType python setlocal omnifunc=python3complete#Complete
+        
 " }}}
