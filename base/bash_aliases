@@ -5,3 +5,5 @@ alias la='ls -A'
 alias l='ls -CF'
 alias tmux="TERM=screen-256color-bce tmux"
 alias dev='tmux -f .dotfiles/tmux/conf/tmux_app.conf attach'
+alias ..='cd ../../'
+alias ...='cd ../../../'
