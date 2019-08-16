@@ -1,7 +1,7 @@
 "Sources
 " https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/nicknisi/dotfiles
-    
+
 " General {{{
     set autoread                            "detect when a file is changed
     set history=1000                        "change history to 1000
@@ -79,6 +79,8 @@
 
 " Autocommands{{{
     autocmd VimResized * wincmd =
+    " removing all trailing whitespace
+    autocmd BufWritePre * %s/\s\+$//e
 " }}}
 
 
@@ -104,13 +106,16 @@
       " Additional plugins here.
       "all minpac#add('jenegunn/fzf',{'do':'./install --all'})
       call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
-      call minpac#add('itchyny/lightline.vim')
+      "call minpac#add('itchyny/lightline.vim')
       call minpac#add('tpope/vim-surround')
       call minpac#add('tpope/vim-commentary')
       call minpac#add('NLKNguyen/papercolor-theme')
       call minpac#add('tell-k/vim-autopep8')
       call minpac#add('moll/vim-bbye')
       call minpac#add('w0rp/ale')
+      call minpac#add('vim-airline/vim-airline')
+      call minpac#add('vim-airline/vim-airline-themes')
+      call minpac#add('tpope/vim-fugitive')
 
 
     endif
@@ -144,7 +149,7 @@
     " scroll the viewport faster
     nnoremap <C-e> 5<C-e>
     nnoremap <C-y> 5<C-y>
-    
+
     " turn off search highlight
     "nnoremap <leader><space> :nohlsearch<CR>
     nnoremap <space> :nohlsearch<CR>
@@ -166,16 +171,16 @@
     nnoremap <PageDown> :bnext<CR>
     " nnoremap <silent> [B :bfirst<CR>
     " nnoremap <silent> ]B :blast<CR>
-    
+
     " helpers for dealing with other people's code
     nmap \t :set ts=4 sts=4 sw=4 noet<cr>
     nmap \s :set ts=4 sts=4 sw=4 et<cr>
 
     " terminal mode
     if has('nvim')
-        tnoremap <Esc> <C-\><C-n> 
+        tnoremap <Esc> <C-\><C-n>
         tnoremap <C-v><Esc> <Esc>
-    endif   
+    endif
 
     if has('nvim')
         highlight! link TermCursor Cursor
@@ -212,11 +217,11 @@
 
 " ale options {{{
     " Check Python files with flake8 and pylint.
-    let b:ale_linters = {'python': ['flake8', 'pylint']}
-    
+    let b:ale_linters = {'python': ['pylint']}
+
     " Fix Python files with autopep8 and yapf.
-    let b:ale_fixers = {'python': ['black', 'yapf']} 
-    
+    let b:ale_fixers = {'python': ['black']}
+
     let g:ale_python_flake8_options = '--ignore=E129,E501,E302,E265,E241,E305,E402,W503'
     let g:ale_python_pylint_options = '-j 0 --max-line-length=100'
     let g:ale_list_window_size = 5
@@ -243,20 +248,25 @@
     " PEP 8
         au BufNewFile,BufRead *.py
             \ set tabstop=4 |
-            \ set softtabstop=4 | 
+            \ set softtabstop=4 |
             \ set shiftwidth=4 |
             \ set textwidth=80 |
             \ set expandtab |
             \ set autoindent |
-            \ set nowrap | 
-            \ set fileformat=unix 
+            \ set nowrap |
+            \ set fileformat=unix
 
     " Flagging Unnecessary Whitespace
         highlight BadWhitespace ctermbg=red guibg=darkred
         au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-    
+
     " Syntax Checking/Highlighting
         let python_highlight_all=1
         autocmd FileType python setlocal omnifunc=python3complete#Complete
-        
+
+" }}}
+" Airline {{{
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#formatter = 'default'
+    let g:airline#extensions#tabline#buffer_nr_show = 1
 " }}}
