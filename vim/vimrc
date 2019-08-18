@@ -116,6 +116,9 @@
       call minpac#add('vim-airline/vim-airline')
       call minpac#add('vim-airline/vim-airline-themes')
       call minpac#add('tpope/vim-fugitive')
+"      call minpac#add('scrooloose/nerdtree')
+"      call minpac#add('Xuyuanp/nerdtree-git-plugin')
+      call minpac#add('dpelle/vim-LanguageTool')
 
 
     endif
@@ -266,7 +269,47 @@
 
 " }}}
 " Airline {{{
+    let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'default'
     let g:airline#extensions#tabline#buffer_nr_show = 1
+    let g:airline_theme='powerlineish-theme'
+
 " }}}
+
+"" NREDTree {{{
+"    " Open NERDTree automatically when vim starts up if no files were specified
+"    autocmd StdinReadPre * let s:std_in=1
+"    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"    " Open NERDTree automatically when vim starts up on opening a directory
+"    autocmd StdinReadPre * let s:std_in=1
+"    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+"    " Open NERDTree
+"    map <C-n> :NERDTreeToggle<CR>
+
+"    " Close vim if the only window left open is a NERDTree
+"    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"    " Refresh NERDTree window
+"    nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+
+"	" NERDTress File highlighting
+"	function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+"	    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='.a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+"        exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+"    endfunction
+
+"    "call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+"    call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+"    call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+"    call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+"    call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+"    call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+"    call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+"    call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+"    "call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+"    call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+"    "call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+"    "call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+"    call NERDTreeHighlightFile('py', 'Magenta', 'none', '#ff00ff','#151515')
+"" }}}
