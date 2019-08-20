@@ -104,20 +104,17 @@
       call minpac#add('k-takata/minpac', {'type': 'opt'})
 
       " Additional plugins here.
-      "all minpac#add('jenegunn/fzf',{'do':'./install --all'})
+      call minpac#add('jenegunn/fzf',{'do':'./install --all'})
       call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
-      "call minpac#add('itchyny/lightline.vim')
       call minpac#add('tpope/vim-surround')
       call minpac#add('tpope/vim-commentary')
       call minpac#add('NLKNguyen/papercolor-theme')
-      call minpac#add('tell-k/vim-autopep8')
       call minpac#add('moll/vim-bbye')
       call minpac#add('w0rp/ale')
       call minpac#add('vim-airline/vim-airline')
       call minpac#add('vim-airline/vim-airline-themes')
       call minpac#add('tpope/vim-fugitive')
-"      call minpac#add('scrooloose/nerdtree')
-"      call minpac#add('Xuyuanp/nerdtree-git-plugin')
+      call minpac#add('cjrh/vim-conda')
       call minpac#add('dpelle/vim-LanguageTool')
 
 
@@ -269,11 +266,17 @@
 
 " }}}
 " Airline {{{
-    let g:airline_powerline_fonts = 1
+"    let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'default'
     let g:airline#extensions#tabline#buffer_nr_show = 1
 
+" }}}
+
+" Netrw {{{
+" https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/
+    let g:netrw_banner = 0
+    let g:netrw_liststyle = 2
 " }}}
 
 "" NREDTree {{{
