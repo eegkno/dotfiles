@@ -70,6 +70,7 @@
 
     " path configuration
     set path=$PWD/** " set your path variable to current directory
+    "set path+=**                            "search down into subfolders
 
     " misc
     set clipboard=unnamed   "use system clipboard
