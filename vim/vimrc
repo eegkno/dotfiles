@@ -69,11 +69,11 @@
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     " path configuration
-    set path=$PWD/** " set your path variable to current directory
-    "set path+=**                            "search down into subfolders
+    set path=$PWD/**                        " set your path variable to current directory
+    "set path+=**                           "search down into subfolders
 
     " misc
-    set clipboard=unnamed   "use system clipboard
+    set clipboard=unnamed                   "use system clipboard
 
 " }}}
 
@@ -117,8 +117,6 @@
       call minpac#add('tpope/vim-fugitive')
       call minpac#add('cjrh/vim-conda')
       call minpac#add('dpelle/vim-LanguageTool')
-
-
     endif
 
     " Plugin settings here.
@@ -213,7 +211,6 @@
     set wildignore+=*.pyc
     set wildignore+=*_build/*
     set wildignore+=*/coverage/*
-
 "}}}
 
 " ale options {{{
@@ -232,8 +229,8 @@
     "let g:ale_fix_on_save = 1
     let g:ale_set_highlights = 1
     " Disable warnings about trailing whitespace for Python files.
-    let g:ale_warn_about_trailing_whitespace = 0
-    let g:ale_warn_about_trailing_blank_lines = 0
+    let g:ale_warn_about_trailing_whitespace = 1
+    let g:ale_warn_about_trailing_blank_lines = 1
     let g:ale_set_balloons = 1
     let g:ale_completion_enabled = 1
     let g:ale_close_preview_on_insert = 1
@@ -242,7 +239,13 @@
     let g:ale_lint_on_text_changed = 'always'
     let g:ale_lint_on_enter = '1'
     let g:ale_lint_on_save = '1'
+    let g:ale_lint_on_filetype_changed = 1
 
+    " Mappings
+    nmap <silent> ++ <Plug>(ale_previous)
+    nmap <silent> -- <Plug>(ale_next)
+    "nmap <silent> +W <Plug>(ale_first)
+    "nmap <silent> -W <Plug>(ale_last)
 "}}}
 
 " Python {{{
@@ -277,7 +280,7 @@
 " Netrw {{{
 " https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/
     let g:netrw_banner = 0
-    let g:netrw_liststyle = 2
+    let g:netrw_liststyle = 3
 " }}}
 
 "" NREDTree {{{
