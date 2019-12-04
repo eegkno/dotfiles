@@ -283,3 +283,6 @@
     let g:netrw_liststyle = 3
 " }}}
 
+" Format JSON files{{{
+    nmap =j :%!python -m json.tool<CR>
+" }}}
