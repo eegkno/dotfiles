@@ -109,12 +109,13 @@
       call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
       call minpac#add('tpope/vim-surround')
       call minpac#add('tpope/vim-commentary')
+      call minpac#add('tpope/vim-fugitive')
+      call minpac#add('tpope/vim-abolish')
       call minpac#add('NLKNguyen/papercolor-theme')
       call minpac#add('moll/vim-bbye')
       call minpac#add('w0rp/ale')
       call minpac#add('vim-airline/vim-airline')
       call minpac#add('vim-airline/vim-airline-themes')
-      call minpac#add('tpope/vim-fugitive')
       call minpac#add('cjrh/vim-conda')
       call minpac#add('dpelle/vim-LanguageTool')
     endif
@@ -194,6 +195,8 @@
     " Close buffers but keep splits
     nmap <leader>b :Bdelete<cr>
 
+    " Save the current buffer using the leader key
+    noremap <Leader>w :w
 "}}}
 
 " Colorscheme and final setup {{{
