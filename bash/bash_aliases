@@ -4,6 +4,7 @@ alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 alias tmux="TERM=screen-256color-bce tmux"
-alias dev='tmux -f ~/.dotfiles/tmux/conf/tmux_app.conf attach'
+alias dev1='tmux -f ~/.dotfiles/tmux/conf/tmux_dev_env1.conf attach'
+alias runpy='tmux new-session -A -s runpy'
 alias ..='cd ../../'
 alias ...='cd ../../../'
