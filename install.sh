@@ -1,6 +1,7 @@
 # Link tmux
 echo "Linking tmux configuration files"
-ln -s $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf 
+ln -s $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+chmod u+x $HOME/.dotfiles/tmux/tmuxcwd.sh
 
 # Link nvim
 echo "creating vim directories"
@@ -14,7 +15,7 @@ mkdir -p $HOME/.config/nvim
 
 echo "Linking vim configuration files"
 ln -s $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
-ln -s $HOME/.dotfiles/vim/init.vim $HOME/.config/nvim/init.vim 
+ln -s $HOME/.dotfiles/vim/init.vim $HOME/.config/nvim/init.vim
 
 echo "Copying git files"
 cp $HOME/.dotfiles/git/.gitconfig $HOME/.gitconfig
