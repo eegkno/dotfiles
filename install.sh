@@ -1,7 +1,7 @@
 # Link tmux
 echo "Linking tmux configuration files"
 ln -s $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf
-chmod u+x $HOME/.dotfiles/tmux/tmuxcwd.sh
+chmod u+x $HOME/.dotfiles/tmux/tmux_envs.sh
 
 # Link nvim
 echo "creating vim directories"
