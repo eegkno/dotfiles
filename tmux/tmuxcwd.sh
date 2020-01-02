@@ -34,7 +34,7 @@ set_session_name() {
 
 create_if_needed_and_attach() {
   set_session_name
-  tmux source-file ~/.tmux.conf
+  tmux source-file $HOME/.tmux.conf
   if ! session_exists; then
     if [ -z "$arg1" ]; then
       #tmux new-session -As "$session_name"
