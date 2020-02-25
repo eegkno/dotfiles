@@ -218,10 +218,11 @@
 
 " ale options {{{
     " Check Python files with flake8 and pylint.
-    let b:ale_linters = {'python': ['pylint']}
+    let b:ale_linters = {'python': ['pylint', 'pydocstyle']}
 
     " Fix Python files with autopep8 and yapf.
-    let b:ale_fixers = {'python': ['black']}
+    let b:ale_fixers = {'*':['remove_trailing_lines', 'trim_whitespace'],
+                        'python': ['black']}
 
     let g:ale_python_flake8_options = '--ignore=E129,E501,E302,E265,E241,E305,E402,W503'
     let g:ale_python_pylint_options = '-j 0 --max-line-length=100'
