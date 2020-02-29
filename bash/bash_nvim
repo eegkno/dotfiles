@@ -1,6 +1,9 @@
 # Nvim confogurations
 #
+alias vi=$(where nvim)
+
 # Variables
+export EDITOR=vi
 export VIMCONFIG=$HOME/.vim
 export VIMDATA=$HOME/.vim
 export VIMRC=$HOME/.vimrc
