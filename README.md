@@ -8,6 +8,6 @@ bash install.sh
 Add at the end of your .bashrc
 
 ```bash
-source $HOME/.dotfiles/base/bash_nvim
-source $HOME/.dotfiles/base/bash_aliases
+source $HOME/.dotfiles/bash/bash_nvim
+source $HOME/.dotfiles/bash/bash_aliases
 ```
