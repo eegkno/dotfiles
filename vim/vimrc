@@ -19,6 +19,12 @@
     set magic                               "set magic on, for regex
     " }}}
 
+
+
+
+
+
+
 " Appearance  {{{
 
     set grepprg=grep\ -nH\ $*               "to generate always a filename
@@ -36,7 +42,7 @@
     set showmatch                           "highlight matching [{()}]
     set lazyredraw                          "redraw only when we need to.
     set t_Co=256                            "explicitly tell vim that the terminal supports 256 colors
-    set nocompatible
+    set nocompatible                        "behave like vim, not old vi
     set hidden                              "navigate away from a modified file without first saveing it
     set shell=$SHELL
     set nowrap                              " don't automatically wrap on load
@@ -196,7 +202,8 @@
     nmap <leader>b :Bdelete<cr>
 
     " Save the current buffer using the leader key
-    noremap <Leader>w :w
+    noremap <Leader>w :w!
+
 "}}}
 
 " Colorscheme and final setup {{{
