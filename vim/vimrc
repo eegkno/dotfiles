@@ -111,18 +111,14 @@
       call minpac#add('k-takata/minpac', {'type': 'opt'})
 
       " Additional plugins here.
-      call minpac#add('jenegunn/fzf',{'do':'./install --all'})
       call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
-      call minpac#add('tpope/vim-surround')
       call minpac#add('tpope/vim-commentary')
-      call minpac#add('tpope/vim-fugitive')
       call minpac#add('tpope/vim-abolish')
       call minpac#add('NLKNguyen/papercolor-theme')
       call minpac#add('moll/vim-bbye')
       call minpac#add('w0rp/ale')
       call minpac#add('vim-airline/vim-airline')
       call minpac#add('vim-airline/vim-airline-themes')
-      call minpac#add('cjrh/vim-conda')
       call minpac#add('dpelle/vim-LanguageTool')
     endif
 
