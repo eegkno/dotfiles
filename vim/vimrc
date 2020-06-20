@@ -13,25 +13,19 @@
 
     " Searching
     set ignorecase                          "case insensitive searching
-    set smartcase                           "case-sensitive if expresson contains a capital letter
+    set smartcase                           "case-sensitive if expression contains a capital letter
     set incsearch                           "search as characters are entered
     set hlsearch                            "highlight matches
     set magic                               "set magic on, for regex
     " }}}
-
-
-
-
-
-
 
 " Appearance  {{{
 
     set grepprg=grep\ -nH\ $*               "to generate always a filename
     set encoding=utf8
     set number                              "show line numbers
-    set relativenumber                      "shows relative nomer in normal mode
-    set laststatus=2                        "show the satus line all the time
+    set relativenumber                      "shows relative number in normal mode
+    set laststatus=2                        "show the staus line all the time
     set noshowmode                          "don't show which mode disabled for PowerLine
     set showmatch                           "show matching braces
     set lbr                                 "break the line by the space
@@ -43,12 +37,14 @@
     set lazyredraw                          "redraw only when we need to.
     set t_Co=256                            "explicitly tell vim that the terminal supports 256 colors
     set nocompatible                        "behave like vim, not old vi
-    set hidden                              "navigate away from a modified file without first saveing it
+    set hidden                              "navigate away from a modified file without first saving it
     set shell=$SHELL
     set nowrap                              " don't automatically wrap on load
     set fo-=t " don't automatically wrap text when typing
-    "set colorcolumn=80
-    "highlight ColorColumn ctermbg=23
+    set colorcolumn=100
+    highlight ColorColumn ctermbg=23
+    set spelllang=en_us                     "enable English 'en_us', French 'fr' and Spanish is 'es' spell checks
+    set spell
 
     " Tab control
     "set noexpandtab                        "insert tabs rather than spaces for <Tab>
@@ -120,7 +116,11 @@
       call minpac#add('w0rp/ale')
       call minpac#add('vim-airline/vim-airline')
       call minpac#add('vim-airline/vim-airline-themes')
+      call minpac#add('dhruvasagar/vim-zoom')
       call minpac#add('dpelle/vim-LanguageTool')
+      call minpac#add('tomasiser/vim-code-dark')
+
+
     endif
 
     " Plugin settings here.
@@ -206,7 +206,8 @@
 " Colorscheme and final setup {{{
     syntax on
     set background=dark
-    colorscheme PaperColor
+    "colorscheme PaperColor
+    colorscheme codedark
 "}}}
 
 " CtrlP settings  {{{
@@ -277,7 +278,7 @@
 
 " }}}
 " Airline {{{
-    let g:airline_theme='simple'
+    let g:airline_theme='codedark'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'default'
     let g:airline#extensions#tabline#buffer_nr_show = 1
