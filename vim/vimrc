@@ -89,7 +89,7 @@
 
 "Plugins {{{
     " mincpac pliugin manager
-    " To be sure that where the plugins are installed
+    " To set where the plugins are installed
     set packpath^=~/.vim
 
     " For a paranoia.
@@ -111,6 +111,7 @@
       call minpac#add('tpope/vim-commentary')
       call minpac#add('tpope/vim-abolish')
       call minpac#add('tpope/vim-surround')
+      call minpac#add('tpope/vim-fugitive')
       call minpac#add('NLKNguyen/papercolor-theme')
       call minpac#add('moll/vim-bbye')
       call minpac#add('w0rp/ale')
@@ -119,6 +120,8 @@
       call minpac#add('dhruvasagar/vim-zoom')
       call minpac#add('dpelle/vim-LanguageTool')
       call minpac#add('tomasiser/vim-code-dark')
+      call minpac#add('junegunn/fzf')
+      call minpac#add('junegunn/fzf.vim')
 
 
     endif
