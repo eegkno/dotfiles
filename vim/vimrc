@@ -277,7 +277,7 @@
 
     " Syntax Checking/Highlighting
         let python_highlight_all=1
-        autocmd FileType python setlocal omnifunc=python3complete#Complete
+        autocmd FileType python setlocal omnifunc=python3complete#Complete nospell
 
 " }}}
 " Airline {{{
