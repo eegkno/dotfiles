@@ -118,10 +118,10 @@
       call minpac#add('vim-airline/vim-airline')
       call minpac#add('vim-airline/vim-airline-themes')
       call minpac#add('dhruvasagar/vim-zoom')
-      call minpac#add('dpelle/vim-LanguageTool')
+      "call minpac#add('dpelle/vim-LanguageTool')
       call minpac#add('tomasiser/vim-code-dark')
-      call minpac#add('junegunn/fzf')
-      call minpac#add('junegunn/fzf.vim')
+      "call minpac#add('junegunn/fzf')
+      "call minpac#add('junegunn/fzf.vim')
 
 
     endif
@@ -211,6 +211,8 @@
     set background=dark
     "colorscheme PaperColor
     colorscheme codedark
+    highlight Search ctermfg=yellow
+
 "}}}
 
 " CtrlP settings  {{{
