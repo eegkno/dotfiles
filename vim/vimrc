@@ -86,6 +86,11 @@
     autocmd BufWritePre * %s/\s\+$//e
 " }}}
 
+" {{{ Python provider configuration
+"    let g:deoplete#enable_at_startup = 1
+"    let g:python3_host_prog = '/Applications/anaconda3/envs/experiments/bin/python'
+"    let g:jedi#environment_path = '/Applications/anaconda3/envs/experiments/bin/python'
+" }}}
 
 "Plugins {{{
     " mincpac pliugin manager
@@ -122,6 +127,8 @@
       call minpac#add('tomasiser/vim-code-dark')
       "call minpac#add('junegunn/fzf')
       "call minpac#add('junegunn/fzf.vim')
+      " call minpac#add('Shougo/deoplete.nvim')
+      " call minpac#add('zchee/deoplete-jedi')
 
 
     endif
