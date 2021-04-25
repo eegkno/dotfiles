@@ -5,11 +5,12 @@
 " General {{{
     set autoread                            "detect when a file is changed
     set history=1000                        "change history to 1000
+    set textwidth=120                       "value for general files
 
     " Backups
-    set undodir=~/.vim/.undo//
-    set backupdir=~/.vim/.backup//
-    set directory=~/.vim/.swp//
+    set undodir=~/.vim/.undo
+    set backupdir=~/.vim/.backup
+    set directory=~/.vim/.swp
 
     " Searching
     set ignorecase                          "case insensitive searching
@@ -45,6 +46,7 @@
     highlight ColorColumn ctermbg=23
     set spelllang=en_us                     "enable English 'en_us', French 'fr' and Spanish is 'es' spell checks
     set spell
+    set signcolumn=auto
 
     " Tab control
     "set noexpandtab                        "insert tabs rather than spaces for <Tab>
@@ -127,8 +129,9 @@
       call minpac#add('tomasiser/vim-code-dark')
       "call minpac#add('junegunn/fzf')
       "call minpac#add('junegunn/fzf.vim')
-      " call minpac#add('Shougo/deoplete.nvim')
-      " call minpac#add('zchee/deoplete-jedi')
+      "call minpac#add('Shougo/deoplete.nvim')
+      "call minpac#add('zchee/deoplete-jedi')
+      call minpac#add('editorconfig/editorconfig-vim')
 
 
     endif
@@ -209,8 +212,11 @@
     nmap <leader>b :Bdelete<cr>
 
     " Save the current buffer using the leader key
-    noremap <Leader>w :w!
+    noremap <Leader>w :w!<cr>
 
+    " keep visual selection when indenting/outdenting
+    vmap < <gv
+    vmap > >gv
 "}}}
 
 " Colorscheme and final setup {{{
@@ -274,7 +280,7 @@
             \ set tabstop=4 |
             \ set softtabstop=4 |
             \ set shiftwidth=4 |
-            \ set textwidth=80 |
+            \ set textwidth=100 |
             \ set expandtab |
             \ set autoindent |
             \ set nowrap |
