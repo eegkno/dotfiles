@@ -109,16 +109,14 @@
     " Declare the list of plugins.
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
     Plug 'dhruvasagar/vim-zoom'
-    "Plug 'tpope/vim-commentary'
-    "Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
+    Plug 'moll/vim-bbye'
 
     " Look and feel
-    Plug 'catppuccin/vim', { 'as': 'catppuccin' }
     Plug 'folke/tokyonight.nvim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'moll/vim-bbye'
 
     " Python
     Plug 'w0rp/ale'
@@ -208,13 +206,10 @@
     set background=dark
     "set termguicolors
 
-    "let g:tokyonight_style = 'storm' " available: night, storm
-    "let g:tokyonight_enable_italic = 1
-    "let g:tokyonight_cursor = 'green'
+    let g:tokyonight_style = 'storm' " available: night, storm
+    let g:tokyonight_enable_italic = 1
+    let g:tokyonight_cursor = 'green'
     colorscheme tokyonight
-    "colorscheme PaperColor
-    "colorscheme codedark
-    "colorscheme catppuccin_latte
     highlight Search ctermfg=yellow
 
 "}}}
