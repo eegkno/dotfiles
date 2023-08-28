@@ -1,11 +1,13 @@
 "Sources
 " https://dougblack.io/words/a-good-vimrc.html
 " https://github.com/nicknisi/dotfiles
+" https://www.chrisatmachine.com/Neovim/02-vim-general-settings/
+" https://www.chrisatmachine.com/Neovim/04-vim-coc/
 
 " General {{{
-    set autoread                            "detect when a file is changed
-    set history=1000                        "change history to 1000
-    set textwidth=120                       "value for general files
+    set autoread                            " Detect when a file is changed
+    set history=1000                        " Change history to 1000
+    set textwidth=120                       " Value for general files
 
     " Backups
     set undodir=~/.vim/.undo
@@ -13,71 +15,81 @@
     set directory=~/.vim/.swp
 
     " Searching
-    set ignorecase                          "case insensitive searching
-    set smartcase                           "case-sensitive if expression contains a capital letter
-    set incsearch                           "search as characters are entered
-    set hlsearch                            "highlight matches
-    set magic                               "set magic on, for regex
+    set ignorecase                          " Case insensitive searching
+    set smartcase                           " Case sensitive if expression contains a capital letter
+    set incsearch                           " Search as characters are entered
+    set hlsearch                            " Highlight matches
+    set magic                               " Set magic on, for regex
     " }}}
 
 " Appearance  {{{
 
-    set grepprg=grep\ -nH\ $*               "to generate always a filename
-    set encoding=utf8
-    set number                              "show line numbers
-    set relativenumber                      "shows relative number in normal mode
-    set laststatus=2                        "show the staus line all the time
-    set noshowmode                          "don't show which mode disabled for PowerLine
-    set showmatch                           "show matching braces
-    set lbr                                 "break the line by the space
-    set ruler                               "shows line number and column number
-    set showcmd                             "show command in bottom bar
-    set cursorline                          "highlight current line
-    set wildmenu                            "visual autocomplete for command menu
-    set showmatch                           "highlight matching [{()}]
-    set lazyredraw                          "redraw only when we need to.
-    set t_Co=256                            "explicitly tell vim that the terminal supports 256 colors
-    set nocompatible                        "behave like vim, not old vi
-    set hidden                              "navigate away from a modified file without first saving it
+    set grepprg=grep\ -nH\ $*               " To generate always a filename
+    set encoding=utf8                       " The encoding displayed
+    set fileencoding=utf-8                  " The encoding written to file
+    set number                              " Show line numbers
+    set relativenumber                      " Show relative number in normal mode
+    set laststatus=2                        " Show the status line all the time
+    set noshowmode                          " Don't show which mode disabled for PowerLine
+    set showmatch                           " Show matching braces
+    set lbr                                 " Break the line by the space
+    set ruler                               " Show line number and column number
+    set showcmd                             " Show command in bottom bar
+    set cmdheight=2                         " More space for displaying messages
+    set cursorline                          " Highlight current line
+    set wildmenu                            " Visual auto-complete for command menu
+    set showmatch                           " Highlight matching [{()}]
+    set lazyredraw                          " Redraw only when we need to.
+    set t_Co=256                            " Explicitly tell vim that the terminal supports 256 colors
+    set nocompatible                        " Behave like vim, not old vi
+    set hidden                              " Navigate away from a modified file without first saving it
     set shell=$SHELL
-    set nowrap                              " don't automatically wrap on load
-    set fo-=t " don't automatically wrap text when typing
+    set nowrap                              " Don't automatically wrap on load
+    set fo-=t                               " Don't automatically wrap text when typing
     set colorcolumn=100
     highlight ColorColumn ctermbg=23
-    set spelllang=en_us                     "enable English 'en_us', French 'fr' and Spanish is 'es' spell checks
+    set spelllang=en_us                     " Enable English 'en_us', French 'fr' and Spanish is 'es' spell checks
     set spell
     set signcolumn=auto
+    set pumheight=10                        " Makes pop-up menu smaller
+    set iskeyword+=-                      	" Treat dash separated words as a word text object"
+    set splitbelow                          " Horizontal splits will automatically be below
+    set splitright                          " Vertical splits will automatically be to the right
+    set conceallevel=0                      " So that I can see `` in markdown files
+    set clipboard=unnamed                   " Use system clipboard
+    set nobackup                            " This is recommended by coc
+    set nowritebackup                       " This is recommended by coc
+    set updatetime=300                      " Faster completion
+    set timeoutlen=500                      " By default timeoutlen is 1000 ms
+    set formatoptions-=cro                  " Stop newline continuation of comments
 
     " Tab control
-    "set noexpandtab                        "insert tabs rather than spaces for <Tab>
-    filetype plugin indent on               "load filetype-specific indent files
-    set smarttab                            "tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
-    "set smartindent	                        "Enable smart-indent, (DEPRECATED)
-    set tabstop=4                           "the visible width of tabs
-    set softtabstop=4                       "edit as if the tabs are 4 characters wide
-    set shiftwidth=4                        "number of spaces to use for indent and unindent
-    set shiftround                          "round indent to a multiple of 'shiftwidth'
-    set expandtab                           "insert spaces rather than tabs for <Tab>
+    filetype plugin indent on               " Load file type-specific indent files
+    set smarttab                            " Tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+    set tabstop=4                           " The visible width of tabs
+    set softtabstop=4                       " Edit as if the tabs are 4 characters wide
+    set shiftwidth=4                        " Number of spaces to use for indent and unindent
+    set shiftround                          " Round indent to a multiple of 'shiftwidth'
+    set expandtab                           " Insert spaces rather than tabs for <Tab>
     set modelines=1
-    set autoindent                          "automatically set indent of new line
+    set autoindent                          " Automatically set indent of new line
 
     " code folding settings
-    set foldenable " enable folding
-    set foldmethod=indent " fold based on indent level
-    set foldlevelstart=10  " open most folds by default
-    set foldnestmax=10 " deepest fold is 10 levels
-    set nofoldenable " don't fold by default
+    set foldenable                          " Enable folding
+    set foldmethod=indent                   " Fold based on indent level
+    set foldlevelstart=10                   " Open most folds by default
+    set foldnestmax=10                      " Deepest fold is 10 levels
+    set nofoldenable                        " Don't fold by default
     set foldlevel=1
 
     "highlight conflicts
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     " path configuration
-    set path=$PWD/**                        " set your path variable to current directory
-    "set path+=**                           "search down into subfolders
+    set path=$PWD/**                        " Set your path variable to current directory
 
-    " misc
-    set clipboard=unnamed                   "use system clipboard
+    " Python support
+    let g:python3_host_prog = expand("/Applications/anaconda3/envs/nvim/bin/python")
 
 " }}}
 
@@ -88,66 +100,35 @@
     autocmd BufWritePre * %s/\s\+$//e
 " }}}
 
-" {{{ Python provider configuration
-"    let g:deoplete#enable_at_startup = 1
-"    let g:python3_host_prog = '/Applications/anaconda3/envs/experiments/bin/python'
-"    let g:jedi#environment_path = '/Applications/anaconda3/envs/experiments/bin/python'
-" }}}
 
-"Plugins {{{
-    " mincpac pliugin manager
-    " To set where the plugins are installed
-    set packpath^=~/.vim
+"Loading plugins {{{
+    " Plugins will be downloaded under the specified directory
+    " (./.local/share/nvim/plugged).
+    call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
-    " For a paranoia.
-    " Normally `:set nocp` is not needed, because it is done automatically
-    " when .vimrc is found.
-    if &compatible
-      " `:set nocp` has many side effects. Therefore this should be done
-      " only when 'compatible' is set.
-      set nocompatible
-    endif
+    " Declare the list of plugins.
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
+    Plug 'dhruvasagar/vim-zoom'
+    "Plug 'tpope/vim-commentary'
+    "Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-surround'
 
-    if exists('*minpac#init')
-      " minpac is loaded.
-      call minpac#init()
-      call minpac#add('k-takata/minpac', {'type': 'opt'})
+    " Look and feel
+    Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+    Plug 'folke/tokyonight.nvim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'moll/vim-bbye'
 
-      " Additional plugins here.
-      call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
-      call minpac#add('tpope/vim-commentary')
-      call minpac#add('tpope/vim-abolish')
-      call minpac#add('tpope/vim-surround')
-      call minpac#add('tpope/vim-fugitive')
-      call minpac#add('NLKNguyen/papercolor-theme')
-      call minpac#add('moll/vim-bbye')
-      call minpac#add('w0rp/ale')
-      call minpac#add('vim-airline/vim-airline')
-      call minpac#add('vim-airline/vim-airline-themes')
-      call minpac#add('dhruvasagar/vim-zoom')
-      "call minpac#add('dpelle/vim-LanguageTool')
-      call minpac#add('tomasiser/vim-code-dark')
-      "call minpac#add('junegunn/fzf')
-      "call minpac#add('junegunn/fzf.vim')
-      "call minpac#add('Shougo/deoplete.nvim')
-      "call minpac#add('zchee/deoplete-jedi')
-      call minpac#add('editorconfig/editorconfig-vim')
+    " Python
+    Plug 'w0rp/ale'
 
 
-    endif
+    " List ends here. Plugins become visible to Vim after this call.
+    call plug#end()
 
-    " Plugin settings here.
+ "}}}
 
-    " Define user commands for updating/cleaning the plugins.
-    " Each of them loads minpac, reloads .vimrc to register the
-    " information of plugins, then performs the task.
-    command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
-    command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
-    command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
-    "command! PackUpdate packadd minpac | source $VIMRC | call minpac#update()
-    "command! PackClean  packadd minpac | source $VIMRC | call minpac#clean()
-
-"}}}
 
 " General Mappings {{{
 
@@ -176,9 +157,8 @@
     " edit vimrc/zshrc and load vimrc bindings
     nnoremap <leader>ev :vsp $VIMRC<CR>
     nnoremap <leader>eb :vsp ~/.bashrc<CR>
+    nnoremap <leader>ez :vsp ~/.zshrc<CR>
     nnoremap <leader>sv :source $VIMRC<CR>
-
-    " line navigation
     nnoremap k gk
     nnoremap j gj
 
@@ -209,7 +189,7 @@
     endif
 
     " Close buffers but keep splits
-    nmap <leader>b :Bdelete<cr>
+    nmap <leader>d :Bdelete<cr>
 
     " Save the current buffer using the leader key
     noremap <Leader>w :w!<cr>
@@ -217,27 +197,36 @@
     " keep visual selection when indenting/outdenting
     vmap < <gv
     vmap > >gv
+
+    " (useful for handling the permission-denied error)
+    cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
 "}}}
 
 " Colorscheme and final setup {{{
     syntax on
     set background=dark
+    "set termguicolors
+
+    "let g:tokyonight_style = 'storm' " available: night, storm
+    "let g:tokyonight_enable_italic = 1
+    "let g:tokyonight_cursor = 'green'
+    colorscheme tokyonight
     "colorscheme PaperColor
-    colorscheme codedark
+    "colorscheme codedark
+    "colorscheme catppuccin_latte
     highlight Search ctermfg=yellow
 
 "}}}
 
-" CtrlP settings  {{{
-    let g:ctrlp_match_window = 'bottom,order:ttb'
-    let g:ctrlp_switch_buffer = 0
-    let g:ctrlp_working_path_mode = 0
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-    let g:ctrlp_max_height = 30
-    set wildignore+=*.pyc
-    set wildignore+=*_build/*
-    set wildignore+=*/coverage/*
-"}}}
+" }}}
+" Airline {{{
+    let g:airline_theme='tokyonight'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#formatter = 'default'
+    let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" }}}
 
 " ale options {{{
     " Check Python files with flake8 and pylint.
@@ -266,6 +255,7 @@
     let g:ale_lint_on_enter = '1'
     let g:ale_lint_on_save = '1'
     let g:ale_lint_on_filetype_changed = 1
+    let g:ale_disable_lsp = 1
 
     " Mappings
     nmap <silent> ++ <Plug>(ale_previous)
@@ -294,14 +284,6 @@
         let python_highlight_all=1
         autocmd FileType python setlocal omnifunc=python3complete#Complete nospell
 
-" }}}
-" Airline {{{
-    let g:airline_theme='codedark'
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#formatter = 'default'
-    let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" }}}
 
 " Netrw {{{
 " https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/
@@ -312,3 +294,4 @@
 " Format JSON files{{{
     nmap =j :%!python -m json.tool<CR>
 " }}}
+
